@@ -280,11 +280,9 @@
                         </div>
                     </div>
 
-
-
-                    <!-- Slider 3 -->
+                    <!-- Slider 2 -->
                     <div
-                        class="w-full rounded-3xl overflow-hidden shadow-2xl relative h-[400px] md:h-[500px] select-none reveal-up before-after-wrapper">
+                        class="w-full rounded-3xl overflow-hidden shadow-2xl relative h-[400px] md:h-[500px] select-none reveal-up stagger-1 before-after-wrapper">
                         <div class="absolute inset-0 w-full h-full">
                             <img src="3_portes_apres.jpg"
                                 class="w-full h-full object-cover" alt="Après rénovation">
@@ -295,6 +293,36 @@
                         <div
                             class="absolute inset-y-0 left-0 w-[50%] overflow-hidden before-wrapper z-10 border-r-2 border-primary">
                             <img src="3_portes_avant.jpg"
+                                class="absolute max-w-none h-full object-cover object-left before-img"
+                                alt="Avant rénovation">
+                            <div
+                                class="absolute top-6 left-6 bg-textDark/90 backdrop-blur text-white font-bold text-xs uppercase px-3 py-1.5 rounded border border-slate-700 shadow-sm pointer-events-none">
+                                Avant</div>
+                        </div>
+
+                        <input type="range"
+                            class="slider-range absolute inset-0 w-full h-full opacity-0 z-20 cursor-ew-resize appearance-none"
+                            min="0" max="100" value="50">
+
+                        <div
+                            class="slider-handle absolute top-1/2 left-[50%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white z-30 pointer-events-none border-4 border-white transition-transform duration-100 ease-out">
+                            <i class="ph-bold ph-arrows-left-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Slider 3 -->
+                    <div
+                        class="w-full rounded-3xl overflow-hidden shadow-2xl relative h-[400px] md:h-[500px] select-none reveal-up before-after-wrapper">
+                        <div class="absolute inset-0 w-full h-full">
+                            <img src="facade_3_fenetre_apres.jpg"
+                                class="w-full h-full object-cover" alt="Après rénovation">
+                            <div
+                                class="absolute top-6 right-6 bg-[#F4EBE0]/90 backdrop-blur text-textDark font-bold text-xs uppercase px-3 py-1.5 rounded border border-slate-200 shadow-sm pointer-events-none">
+                                Après</div>
+                        </div>
+                        <div
+                            class="absolute inset-y-0 left-0 w-[50%] overflow-hidden before-wrapper z-10 border-r-2 border-primary">
+                            <img src="facade_3_fenetre_avant.jpg"
                                 class="absolute max-w-none h-full object-cover object-left before-img"
                                 alt="Avant rénovation">
                             <div
