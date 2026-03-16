@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rénovation Defrance | Maîtres Façadiers de Normandie</title>
+    <meta name="description"
+        content="Découvrez Rénovation Defrance, Maîtres Façadiers de Normandie. Démoussage, peinture, couverture et restauration de façades. L'expertise artisanale au service de votre patrimoine.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800;900&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#A04D36',      /* Royal Blue */
+                        primaryLight: '#B8654B',
+                        accent: '#3C5A4C',       /* Elegant Gold/Yellow touch */
+                        textDark: '#2B2421',     /* Deep blue instead of black */
+                        bgLight: '#F4EBE0',      /* Très clair ivoire */
+                        bgWarm: '#EBE2D5',       /* Beige sable clair */
+                        bgMuted: '#E3D8CB',      /* Beige légèrement plus soutenu */
+                        surface: '#F4EBE0'
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                        drama: ['Cormorant Garamond', 'serif'],
+                        data: ['IBM Plex Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="font-body text-[#475569] bg-bgLight antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Global Noise Overlay -->
+    <svg style="display: none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" stitchTiles="stitch" />
+        </filter>
+    </svg>
+    <div class="fixed inset-0 pointer-events-none noise-bg mix-blend-multiply opacity-[0.03] z-[9999]"
+        style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');">
+    </div>
+
+    <!-- Floating Navbar -->
+    <nav id="navbar"
+        class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[1200px] z-[1000] rounded-full transition-all duration-500 flex items-center justify-between px-8 py-4 border border-transparent">
+        <a href="#"
+            class="font-heading font-black text-2xl tracking-wide flex items-center gap-2 text-white logo-text transition-colors duration-300">
+            <i class="ph-fill ph-paint-roller text-primary"
+                style="-webkit-text-stroke: 1px #2B2421;"></i><span>Rénovation<span
+                    class="text-[#CFAE70]">Defrance</span></span>
+        </a>
+        <div class="hidden md:flex gap-8 nav-links">
+            <a href="#services" class="text-white font-medium text-sm hover:text-primary transition-colors">Nos
+                services</a>
+            <a href="#realisations"
+                class="text-white font-medium text-sm hover:text-primary transition-colors">Réalisations</a>
+            <a href="#pourquoi"
+                class="text-white font-medium text-sm hover:text-primary transition-colors">L'Excellence</a>
+        </div>
+        <a href="#contact"
+            class="btn-magnetic bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] flex items-center gap-2">
+            Obtenir un devis <i class="ph-bold ph-arrow-right"></i>
+        </a>
+    </nav>
+
+    <!-- Floating Mobile Btn -->
+    <a href="tel:0783565667"
+        class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(29,78,216,0.4)] z-[990] btn-magnetic">
+        <i class="ph-fill ph-phone"></i>
+        <div class="absolute inset-0 rounded-full border-2 border-primary animate-ping opacity-50"></div>
+    </a>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative h-[100dvh] w-full flex items-end overflow-hidden hero-section">
+            <!-- HD Video Background (Fallback Unsplash if slow) -->
+            <div class="absolute inset-0 w-full h-full z-0">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2560&auto=format&fit=crop"
+                    alt="Intérieur moderne premium" class="w-full h-full object-cover scale-[1.02] hero-video">
+                <div class="absolute inset-0 bg-gradient-to-t from-textDark via-textDark/60 to-transparent z-10"></div>
+                <!-- Premium blue tint overlay -->
+                <div class="absolute inset-0 bg-primary/10 z-10 mix-blend-overlay"></div>
+            </div>
+
+            <div class="relative z-20 w-full max-w-[1280px] mx-auto px-6 pb-20 md:pb-32 hero-content">
+
+                <h1
+                    class="text-white text-5xl md:text-7xl font-heading font-bold leading-[1.1] mb-6 tracking-tight hero-title">
+                    Maîtres Façadiers <br>
+                    <span
+                        class="font-drama italic font-normal text-6xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 block mt-2">de
+                        Normandie.</span>
+                </h1>
+                <p class="text-white/80 text-lg md:text-xl max-w-xl font-body mb-10 hero-desc font-light">
+                    Démoussage, peinture, couverture et restauration de façades. L'expertise artisanale au service de
+                    votre patrimoine.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 hero-btns">
+                    <a href="#contact"
+                        class="btn-magnetic bg-blue-600 text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(37,99,235,0.3)]">
+                        Demander un devis gratuit <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES (Micro-UIs) -->
+        <section id="services" class="py-32 bg-bgWarm">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="text-center mb-24 reveal-up">
+                    <h2 class="text-textDark text-4xl md:text-5xl font-heading font-bold mb-4">Notre Maîtrise</h2>
+                    <p class="text-lg text-slate-500 max-w-2xl mx-auto">De la préparation minutieuse à la finition
+                        éclatante, chaque étape est traitée avec le plus grand soin par nos équipes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+
+                    <!-- Card 1: Diagnostic Shuffler -->
+                    <div
+                        class="service-card rounded-4xl overflow-hidden flex flex-col justify-end min-h-[500px] md:min-h-[550px] md:col-span-5 group reveal-up shadow-lg relative cursor-pointer">
+                        <div class="absolute inset-0 z-0">
+                            <img src="Peinture interieure.png"
+                                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                alt="Artisan peignant un mur">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-textDark via-textDark/50 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-90">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 p-8 text-white transition-transform duration-500 transform group-hover:-translate-y-2">
+                            <div
+                                class="w-12 h-1 bg-blue-600 mb-4 rounded-full transition-transform duration-500 transform origin-left scale-x-0 group-hover:scale-x-100">
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold mb-3 text-white drop-shadow-md">Peinture
+                                Intérieure & Extérieure</h3>
+                            <p class="text-white/90 text-sm leading-relaxed drop-shadow-md">Application de peintures
+                                haut de gamme, rafraîchissement d'intérieurs et traitement des façades pour une
+                                durabilité maximale.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Telemetry Typewriter -->
+                    <div
+                        class="service-card rounded-4xl overflow-hidden flex flex-col justify-end min-h-[500px] md:min-h-[650px] md:col-span-7 md:mt-20 group reveal-up stagger-1 shadow-2xl relative cursor-pointer z-10">
+                        <div class="absolute inset-0 z-0">
+                            <img src="Ravalement de façade &amp; Revêtements.png"
+                                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                alt="Ravalement de façade d'une maison">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-textDark via-textDark/50 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-90">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 p-8 text-white transition-transform duration-500 transform group-hover:-translate-y-2">
+                            <div
+                                class="w-12 h-1 bg-blue-600 mb-4 rounded-full transition-transform duration-500 transform origin-left scale-x-0 group-hover:scale-x-100">
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold mb-3 text-white drop-shadow-md">Ravalement de
+                                façade & Revêtements</h3>
+                            <p class="text-white/90 text-sm leading-relaxed drop-shadow-md">Protocoles stricts pour
+                                rhabiller vos murs (papier peint, toile de verre, décoration) et sublimer l'extérieur de
+                                vos bâtiments.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Cursor Protocol Scheduler -->
+                    <div
+                        class="service-card rounded-4xl overflow-hidden flex flex-col justify-end min-h-[400px] md:min-h-[450px] md:col-span-10 md:col-start-2 group reveal-up shadow-lg relative cursor-pointer md:-mt-10">
+                        <div class="absolute inset-0 z-0">
+                            <img src="Renovation complete.png"
+                                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                alt="Chantier de rénovation complète">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-textDark via-textDark/50 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-90">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 p-8 text-white transition-transform duration-500 transform group-hover:-translate-y-2">
+                            <div
+                                class="w-12 h-1 bg-blue-600 mb-4 rounded-full transition-transform duration-500 transform origin-left scale-x-0 group-hover:scale-x-100">
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold mb-3 text-white drop-shadow-md">Rénovation
+                                Complète</h3>
+                            <p class="text-white/90 text-sm leading-relaxed drop-shadow-md">Gestion totale de la
+                                rénovation de A à Z. Intervention rapide en Seine-Maritime avec un respect millimétré
+                                des délais annoncés.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PHILOSOPHY / THE MANIFESTO -->
+        <section id="pourquoi"
+            class="py-40 bg-textDark relative overflow-hidden flex flex-col items-center justify-center">
+            <!-- Parallax organic texture -->
+            <div class="absolute inset-0 w-full h-full opacity-10 mix-blend-luminosity">
+                <img src="https://images.unsplash.com/photo-1541123437800-1bb1317bc951?q=80&w=2000&auto=format&fit=crop"
+                    class="w-full h-full object-cover parallax-img" alt="Texture peinture">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-textDark via-transparent to-textDark z-10"></div>
+
+            <div class="relative z-20 text-center px-6 max-w-4xl mx-auto manifesto-container">
+                <p class="text-slate-400 text-xl md:text-2xl font-body font-light mb-8 manifesto-line-1">
+                    La plupart des artisans se concentrent sur la rapidité.
+                </p>
+                <p class="text-white text-5xl md:text-7xl font-drama italic manifesto-line-2">
+                    Nous nous concentrons sur : <br>
+                    <span class="text-accent font-bold not-italic font-heading block mt-4 tracking-tight">Le Souci du
+                        Détail.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- REALISATIONS (Interactive Before/After Slider) -->
+        <section id="realisations"
+            class="py-32 bg-bgLight rounded-t-5xl -mt-10 relative z-30 shadow-[0_-20px_50px_rgba(15,23,42,0.05)]">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="text-center mb-16 reveal-up">
+                    <h2 class="text-textDark text-4xl md:text-5xl font-heading font-bold mb-4">L'Art de la
+                        Transformation</h2>
+                    <p class="text-lg text-slate-500 max-w-2xl mx-auto">Constatez par vous-même la qualité de nos
+                        interventions et la netteté de nos finitions.</p>
+                </div>
+
+                <!-- Custom Before/After Component -->
+                <div
+                    class="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl relative h-[400px] md:h-[600px] select-none reveal-up before-after-wrapper">
+                    <div class="absolute inset-0 w-full h-full">
+                        <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?q=80&w=1400&auto=format&fit=crop"
+                            class="w-full h-full object-cover" alt="Après rénovation">
+                        <div
+                            class="absolute top-6 right-6 bg-[#F4EBE0]/90 backdrop-blur text-textDark font-bold text-xs uppercase px-3 py-1.5 rounded border border-slate-200 shadow-sm pointer-events-none">
+                            Après</div>
+                    </div>
+                    <div
+                        class="absolute inset-y-0 left-0 w-[50%] overflow-hidden before-wrapper z-10 border-r-2 border-blue-600">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1400&auto=format&fit=crop"
+                            class="absolute w-[896px] max-w-none h-full object-cover grayscale opacity-80"
+                            alt="Avant rénovation" id="before-img">
+                        <div
+                            class="absolute top-6 left-6 bg-textDark/90 backdrop-blur text-white font-bold text-xs uppercase px-3 py-1.5 rounded border border-slate-700 shadow-sm pointer-events-none">
+                            Avant</div>
+                    </div>
+
+                    <input type="range"
+                        class="slider-range absolute inset-0 w-full h-full opacity-0 z-20 cursor-ew-resize appearance-none"
+                        min="0" max="100" value="50">
+
+                    <div
+                        class="slider-handle absolute top-1/2 left-[50%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-blue-600 rounded-full shadow-lg flex items-center justify-center text-white z-30 pointer-events-none border-4 border-white transition-transform duration-100 ease-out">
+                        <i class="ph-bold ph-arrows-left-right"></i>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 reveal-up">
+                    <div
+                        class="flex flex-wrap justify-center gap-4 text-sm font-bold text-textDark uppercase tracking-wider mb-8">
+                        <span class="flex items-center gap-2 bg-[#E3D8Cb] px-4 py-2 rounded-full"><i
+                                class="ph-fill ph-check-circle text-green-600"></i> Travail soigné</span>
+                        <span class="flex items-center gap-2 bg-[#E3D8Cb] px-4 py-2 rounded-full"><i
+                                class="ph-fill ph-check-circle text-green-600"></i> Devis transparent</span>
+                        <span class="flex items-center gap-2 bg-[#E3D8Cb] px-4 py-2 rounded-full"><i
+                                class="ph-fill ph-check-circle text-green-600"></i> Matériaux de qualité</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS (Premium style) -->
+        <section class="py-24 bg-bgWarm border-t border-slate-200">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Avis 1 -->
+                    <div class="bg-bgLight p-8 rounded-3xl shadow-sm border border-slate-100 reveal-up">
+                        <div class="flex items-center gap-1 text-amber-500 mb-4">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"Rénovation Defrance a entièrement repeint notre salon.
+                            Le résultat est impeccable, les murs sont lisses et les finitions parfaites. Chantier laissé
+                            extrêmement propre."</p>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-bold font-heading flex items-center justify-center">
+                                M</div>
+                            <div>
+                                <div class="font-bold text-textDark text-sm">Marc D.</div>
+                                <div class="text-xs text-slate-400">Rouen</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Avis 2 -->
+                    <div class="bg-bgLight p-8 rounded-3xl shadow-sm border border-slate-100 reveal-up stagger-1">
+                        <div class="flex items-center gap-1 text-amber-500 mb-4">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"Devis reçu en 24h, transparent et respecté. L'équipe est
+                            professionnelle, ponctuelle et discrète. Je recommande chaleureusement pour vos
+                            ravalements."</p>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-green-100 text-green-600 font-bold font-heading flex items-center justify-center">
+                                S</div>
+                            <div>
+                                <div class="font-bold text-textDark text-sm">Sophie L.</div>
+                                <div class="text-xs text-slate-400">Le Havre</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Avis 3 -->
+                    <div class="bg-bgLight p-8 rounded-3xl shadow-sm border border-slate-100 reveal-up stagger-2">
+                        <div class="flex items-center gap-1 text-amber-500 mb-4">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"Excellent artisan ! Un vrai sens du détail et de très
+                            bons conseils sur le choix des teintes. Le rendu premium a complètement métamorphosé notre
+                            intérieur."</p>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 font-bold font-heading flex items-center justify-center">
+                                J</div>
+                            <div>
+                                <div class="font-bold text-textDark text-sm">Julien R.</div>
+                                <div class="text-xs text-slate-400">Dieppe</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZONE D'INTERVENTION -->
+        <section id="zone-intervention" class="py-24 bg-bgLight">
+            <div class="max-w-[1280px] mx-auto px-6">
+                <div class="flex flex-col md:flex-row gap-16 items-center">
+                    <div class="w-full md:w-1/2 reveal-up">
+                        <h2 class="text-textDark text-4xl md:text-5xl font-heading font-bold mb-6">Zone d'Intervention
+                        </h2>
+                        <p class="text-lg text-slate-500 mb-10 max-w-lg">Nous intervenons dans toute la région dieppoise
+                            et en Seine-Maritime pour redonner vie à vos façades.</p>
+
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 bg-[#1A1A1A] text-[#CFAE70] rounded-full flex items-center justify-center shrink-0 shadow-lg">
+                                    <i class="ph-bold ph-map-pin text-xl"></i>
+                                </div>
+                                <div class="pt-1">
+                                    <h4 class="font-bold text-textDark text-lg mb-1">Siège Social</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed">18 bis Rue Bréquigny<br>76200
+                                        Dieppe</p>
+                                </div>
+                            </div>
+
+                            <hr class="border-slate-200/60">
+
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 bg-[#1A1A1A] text-[#CFAE70] rounded-full flex items-center justify-center shrink-0 shadow-lg">
+                                    <i class="ph-bold ph-clock text-xl"></i>
+                                </div>
+                                <div class="pt-1">
+                                    <h4 class="font-bold text-textDark text-lg mb-1">Horaires</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed">08:00 - 19:00 (Lundi -
+                                        Vendredi)<br>Samedi Matin (Sur rendez-vous)</p>
+                                </div>
+                            </div>
+
+                            <hr class="border-slate-200/60">
+
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 bg-[#1A1A1A] text-[#CFAE70] rounded-full flex items-center justify-center shrink-0 shadow-lg">
+                                    <i class="ph-bold ph-navigation-arrow text-xl"></i>
+                                </div>
+                                <div class="pt-1">
+                                    <h4 class="font-bold text-textDark text-lg mb-1">Rayon d'action</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed">Haute Normandie & Dieppe
+                                        Agglomération</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-12">
+                            <a href="#contact"
+                                class="inline-flex items-center gap-3 bg-[#CFAE70] text-[#1A1A1A] px-8 py-4 rounded-full font-bold shadow-lg hover:bg-[#b8985c] hover:shadow-xl transition-all">
+                                Programmer une visite <span
+                                    class="text-sm font-medium opacity-80 pl-2 border-l border-[#1A1A1A]/20">07 83 56 56
+                                    67</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 reveal-up stagger-1">
+                        <div class="rounded-[2.5rem] overflow-hidden shadow-2xl h-[500px] w-full relative">
+                            <!-- Placeholder Google Maps -->
+                            <iframe class="absolute inset-0 w-full h-full" style="border:0;" loading="lazy"
+                                allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.208608298717!2d1.082725076632484!3d49.92135837138334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e06af1c210abdd%3A0xe5a133df1feaa3c1!2s18%20Rue%20de%20Brequigny%2C%2076200%20Dieppe!5e0!3m2!1sfr!2sfr!4v1714400000000!5m2!1sfr!2sfr"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section id="contact" class="py-32 bg-bgWarm flex justify-center">
+            <div
+                class="max-w-[1000px] w-[90%] bg-primary rounded-5xl p-10 md:p-20 text-center relative overflow-hidden shadow-2xl reveal-up">
+                <div
+                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1400&auto=format&fit=crop')] opacity-10 object-cover mix-blend-overlay">
+                </div>
+
+                <h2 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 relative z-10 leading-tight">
+                    Transformez votre intérieur dès aujourd'hui.</h2>
+                <p class="text-white/80 text-lg md:text-xl font-body mb-10 max-w-2xl mx-auto relative z-10">Obtenez une
+                    estimation rapide et gratuite pour vos travaux en Seine-Maritime. Nous nous engageons à vous
+                    répondre sous 24h.</p>
+
+                <!-- Simple Form -->
+                <form class="max-w-xl mx-auto flex flex-col gap-4 relative z-10 text-left"
+                    onsubmit="event.preventDefault(); alert('Demande envoyée !');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Prénom & Nom"
+                            class="w-full bg-[#F4EBE0]/10 border border-white/20 text-white placeholder-white/50 px-5 py-4 rounded-2xl focus:outline-none focus:border-white focus:bg-[#F4EBE0]/20 transition-all font-body text-sm"
+                            required>
+                        <input type="tel" placeholder="Téléphone"
+                            class="w-full bg-[#F4EBE0]/10 border border-white/20 text-white placeholder-white/50 px-5 py-4 rounded-2xl focus:outline-none focus:border-white focus:bg-[#F4EBE0]/20 transition-all font-body text-sm"
+                            required>
+                    </div>
+                    <input type="email" placeholder="Adresse e-mail"
+                        class="w-full bg-[#F4EBE0]/10 border border-white/20 text-white placeholder-white/50 px-5 py-4 rounded-2xl focus:outline-none focus:border-white focus:bg-[#F4EBE0]/20 transition-all font-body text-sm"
+                        required>
+                    <textarea placeholder="Description courte (Pièce à repeindre, m², urgence...)" rows="3"
+                        class="w-full bg-[#F4EBE0]/10 border border-white/20 text-white placeholder-white/50 px-5 py-4 rounded-2xl focus:outline-none focus:border-white focus:bg-[#F4EBE0]/20 transition-all font-body text-sm resize-none"></textarea>
+
+                    <button type="submit"
+                        class="btn-magnetic bg-[#F4EBE0] text-primary w-full py-4 rounded-2xl font-bold font-heading text-lg mt-2 shadow-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-shadow flex justify-center items-center gap-2">
+                        Envoyer ma demande <i class="ph-bold ph-paper-plane-tilt"></i>
+                    </button>
+                    <p class="text-white/60 text-xs text-center mt-2">Devis gratuit et sans engagement géographique sur
+                        tout le 76.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-textDark pt-24 pb-12 rounded-t-5xl -mt-10 relative z-30">
+        <div class="max-w-[1280px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <a href="#"
+                        class="font-heading font-black text-2xl tracking-wide flex items-center gap-2 text-white mb-6">
+                        <i class="ph-fill ph-paint-roller text-primary"
+                            style="-webkit-text-stroke: 1px #2B2421;"></i><span>Rénovation<span
+                                class="text-[#CFAE70]">Defrance</span></span>
+                    </a>
+                    <p class="text-slate-400 text-sm max-w-xs mb-8">L'expertise reconnue en peinture, ravalement et
+                        aménagement intérieur en Seine-Maritime.</p>
+
+                    <div
+                        class="flex items-center gap-3 bg-[#F4EBE0]/5 border border-white/10 px-4 py-2 rounded-full w-max">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-xs font-data text-slate-300 tracking-wider">DISPONIBLE POUR DEVIS</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 text-lg">Contact & Coordonnées</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li class="flex items-start gap-3"><i class="ph-bold ph-map-pin text-blue-500 text-lg"></i>
+                            Intervient sur Rouen, Le Havre, Dieppe et tout le 76.</li>
+                        <li class="flex items-center gap-3"><i class="ph-bold ph-phone text-blue-500 text-lg"></i>
+                            <a href="tel:0783565667" class="hover:text-white transition-colors">07 83 56 56 67</a>
+                        </li>
+                        <li class="flex items-center gap-3"><i
+                                class="ph-bold ph-envelope-simple text-blue-500 text-lg"></i> <a
+                                href="mailto:contact@renovationdefrance.fr"
+                                class="hover:text-white transition-colors">contact@renovationdefrance.fr</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 text-lg">Mentions Légales</h4>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Mentions légales</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Assurance RC Pro & Décennale à
+                                jour</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 font-data">
+                <p>&copy; 2026 Rénovation Defrance. Tous droits réservés.</p>
+                <p class="mt-4 md:mt-0">Design & Architecture par <span class="text-slate-300 font-bold">DIEX</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
