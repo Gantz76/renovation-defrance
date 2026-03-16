@@ -63,27 +63,30 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "none"
     });
 
-    // 7. Interactive Before/After Slider
-    const slider = document.querySelector('.slider-range');
-    const beforeWrapper = document.querySelector('.before-wrapper');
-    const handle = document.querySelector('.slider-handle');
-    const baWrapper = document.getElementById('ba-wrapper');
-    const beforeImg = document.getElementById('before-img');
+    // 7. Interactive Before/After Sliders
+    const sliders = document.querySelectorAll('.before-after-wrapper');
+    
+    sliders.forEach(wrapper => {
+        const slider = wrapper.querySelector('.slider-range');
+        const beforeWrapper = wrapper.querySelector('.before-wrapper');
+        const handle = wrapper.querySelector('.slider-handle');
+        const beforeImg = wrapper.querySelector('.before-img');
 
-    if (slider && beforeImg && baWrapper) {
-        // Sync before-img width to container width so portrait images don't stretch
-        const syncWidth = () => {
-            beforeImg.style.width = baWrapper.offsetWidth + 'px';
-        };
-        window.addEventListener('resize', syncWidth);
-        syncWidth();
+        if (slider && beforeImg) {
+            // Sync before-img width to container width so portrait images don't stretch
+            const syncWidth = () => {
+                beforeImg.style.width = wrapper.offsetWidth + 'px';
+            };
+            window.addEventListener('resize', syncWidth);
+            syncWidth();
 
-        slider.addEventListener('input', (e) => {
-            const val = e.target.value;
-            beforeWrapper.style.width = `${val}%`;
-            handle.style.left = `${val}%`;
-        });
-    }
+            slider.addEventListener('input', (e) => {
+                const val = e.target.value;
+                beforeWrapper.style.width = `${val}%`;
+                handle.style.left = `${val}%`;
+            });
+        }
+    });
 
     // Buttons Magnetic Effect
     const magneticBtns = document.querySelectorAll('.btn-magnetic');
